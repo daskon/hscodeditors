@@ -217,8 +217,11 @@ header('location:../index.php');
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tasks"></i>Tasks</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                    <a href="task.php">Add Task</a>
+                                </li>
                                 <li>
-                                    <a href="task.php">User History</a>
+                                    <a href="userhistory.php">User History</a>
                                 </li>
                                 <li>
                                     <a href="">Provider History</a>
