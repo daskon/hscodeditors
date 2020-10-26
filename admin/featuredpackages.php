@@ -221,16 +221,37 @@ header('location:../index.php');
                             </ul>
                         </li>
 
-
-
+                        <li class="has-sub">
+                         <a class="js-arrow" href="#">
+                                <i class="fas fa-box"></i>Professional</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="professional.php">Manage accounts</a>
+                                </li>
+                                <li>
+                                    <a href="featuredpackages.php">Demanded works</a>
+                                </li>
+                            </ul>
+                        </li>
 
                         <li>
                             <a href="services.php">
                                 <i class="fas fa-chart-bar"></i>Services</a>
                         </li>
-                   <li>
-                            <a href="task.php">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-tasks"></i>Tasks</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="task.php">Add Task</a>
+                                </li>
+                                <li>
+                                    <a href="">User History</a>
+                                </li>
+                                <li>
+                                    <a href="">Provider History</a>
+                                </li>
+                            </ul>
                         </li>
 
 <li>
