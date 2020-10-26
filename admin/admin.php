@@ -224,7 +224,7 @@ header('location:../index.php');
                                     <a href="userhistory.php">User History</a>
                                 </li>
                                 <li>
-                                    <a href="">Provider History</a>
+                                    <a href="providerhistory.php">Provider History</a>
                                 </li>
                             </ul>
                         </li>
