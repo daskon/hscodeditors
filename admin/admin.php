@@ -196,9 +196,17 @@ header('location:../index.php');
                         </li>
 
 
-                        <li>
-                            <a href="professional.php">
-                                <i class="fas fa-chart-bar"></i>Professional</a>
+                        <li class="has-sub">
+                         <a class="js-arrow" href="#">
+                                <i class="fas fa-box"></i>Professional</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="professional.php">Manage accounts</a>
+                                </li>
+                                <li>
+                                    <a href="featuredpackages.php">Demanded works</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li>
