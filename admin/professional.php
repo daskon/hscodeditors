@@ -328,13 +328,14 @@ header('Content-Type: text/html; charset=utf-8' );
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
                                 <div class="table-responsive m-b-40">
+                                    <h2>Unapproved Professionals Accounts</h2>
+                                <form method="get" action="">
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
                                                 <th>Provider Name</th>
                                                 <th>Provider Email</th>
                                                 <th>Service Category</th>
-                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -347,25 +348,20 @@ $con->set_charset("UTF8");
 
 $sql = "SELECT v.vendor_id, v.vendor_name, v.vendor_email, s.cat_name, v.status
         FROM vendor v , service_category s
-        WHERE v.cat_id = s.cat_id";
+        WHERE v.cat_id = s.cat_id AND v.status = 0";
 
 $result = $con->query($sql);
 
 while ($fetch = mysqli_fetch_assoc($result)) {
 
     echo 
-    "<form method='post'>
-    <tr><td>".$fetch['vendor_name'] . "</td>
+    "<tr><td>".$fetch['vendor_name'] . "</td>
     <td>". $fetch['vendor_email'] ."</td>
     <td>". $fetch['cat_name'] ."</td>
-    <td> 
-    <input type='checkbox' id='status' value='". $fetch['vendor_id']."' ".($fetch['status'] == 1 ? 'checked':' ').">
-    </td>
     <td>
-     <input type='submit' name='save' value='SAVE' class='btn btn-success' >
+     <button type='submit' id='rowid' name='rowid' class='btn btn-success' value='". $fetch['vendor_id'] ."'>Activate</button>
     </td>
-    </tr>
-    </form>";
+    </tr>";
 
 }
 
@@ -373,12 +369,58 @@ while ($fetch = mysqli_fetch_assoc($result)) {
 
                                         </tbody>
                                     </table>
+                                </form>
                                 </div>
                                 <!-- END DATA TABLE-->
 
 
+                    </div>
 
-                        <div class="row">
+                    <div class="col-md-12">
+                                <!-- DATA TABLE-->
+                                <div class="table-responsive m-b-40">
+                                    <h2>Approved Professionals Accounts</h2>
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>Provider Name</th>
+                                                <th>Provider Email</th>
+                                                <th>Service Category</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <?php
+
+include 'connect.php';
+$con->set_charset("UTF8");
+
+$sql = "SELECT v.vendor_id, v.vendor_name, v.vendor_email, s.cat_name, v.status
+        FROM vendor v , service_category s
+        WHERE v.cat_id = s.cat_id AND v.status = 1";
+
+$result = $con->query($sql);
+
+while ($fetch = mysqli_fetch_assoc($result)) {
+
+    echo 
+    "<tr><td>".$fetch['vendor_name'] . "</td>
+    <td>". $fetch['vendor_email'] ."</td>
+    <td>". $fetch['cat_name'] ."</td>
+    <td> 
+    <span class='label label-success'>Activated</span>
+    </td>
+    </tr>";
+
+}
+
+?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
                                     <p>Copyright @ 2020 HS Codeditors. All rights reserved. Template by <a href="https://hibasheikh.com">HS </a> & <a href="https://www.thecodeditors.com">Codeditors</a>.</p>
@@ -425,17 +467,15 @@ while ($fetch = mysqli_fetch_assoc($result)) {
 
 //change the vendor status
 
-if(isset($_POST['save'])){
-
-$id = 1;
-
-//echo $id;
+if(isset($_GET['rowid'])){
 
 include 'connect.php';
 
-$update_query = "UPDATE vendor SET status='$id' WHERE vendor_id='$id'";
+$vid = $_GET['rowid'];
 
-$upadte_result = $con->query($update_query);
+    $update_query = "UPDATE vendor SET status=1 WHERE vendor_id='$vid'";
+
+    $con->query($update_query);
 
 }
 
