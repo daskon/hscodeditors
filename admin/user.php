@@ -140,10 +140,10 @@ header('location:../index.php');
                                     <a href="task.php">Add Task</a>
                                 </li>
                                 <li>
-                                    <a href="">User History</a>
+                                    <a href="userhistory.php">User History</a>
                                 </li>
                                 <li>
-                                    <a href="">Provider History</a>
+                                    <a href="providerhistory.php">Provider History</a>
                                 </li>
                             </ul>
                         </li>
